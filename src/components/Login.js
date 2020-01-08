@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {updateUsername} from '../redux/reducer'
 
-export default class Login extends Component {
+class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -16,6 +18,8 @@ export default class Login extends Component {
         this.setState({
             username: e.target.value
         })
+
+        this.props.updateUsername(e.target.value)
     }
 
     handlePasswordChange(e) {
@@ -34,3 +38,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default connect(undefined,{updateUsername})(Login)
